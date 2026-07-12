@@ -72,6 +72,18 @@ export default function RootLayout({
               {!isLandingDomain && <NetworkGuard />}
               {!isLandingDomain && <Navbar />}
               <main className={isLandingDomain ? "" : ""}>{children}</main>
+              {!isLandingDomain && (
+                <footer className="border-t border-line mt-16">
+                  <div className="max-w-[1240px] mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-muted">
+                    <p>© {new Date().getFullYear()} Hoodsea</p>
+                    <div className="flex items-center gap-5">
+                      <a href="https://x.com/hoodsea_" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-ink transition-colors">X</a>
+                      <a href="https://github.com/Hoodseac/hoodsea" target="_blank" rel="noopener noreferrer" className="font-medium hover:text-ink transition-colors">GitHub</a>
+                      <a href="/docs" className="font-medium hover:text-ink transition-colors">Docs</a>
+                    </div>
+                  </div>
+                </footer>
+              )}
             </div>
           </LaunchGate>
           <Toaster
