@@ -1,0 +1,24 @@
+{
+  "_TODO": "Farcaster Mini App manifest placeholder. The previous manifest was OriginPad-specific (its FID, domain signature, and assets). To enable a Hoodsea Mini App: sign a new accountAssociation for the deployed domain with the Hoodsea Farcaster account, then fill in real values below.",
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Hoodsea",
+    "iconUrl": "",
+    "homeUrl": "",
+    "splashImageUrl": "",
+    "splashBackgroundColor": "#F2F7F4",
+    "subtitle": "NFT and token launchpad",
+    "description": "Launch NFT collections and tokens on Robinhood Chain.",
+    "primaryCategory": "finance",
+    "tags": ["nft", "launchpad", "tokens", "defi"],
+    "heroImageUrl": "",
+    "ogTitle": "Hoodsea",
+    "ogDescription": "Launch NFT collections and tokens on Robinhood Chain.",
+    "ogImageUrl": ""
+  }
+}

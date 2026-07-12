@@ -1,0 +1,321 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hoodsea design system, in the Primehod family: ivory paper, white cards with
+   hairline borders, near-black ink text, pill buttons, Inter. Lime #CEF606 is
+   the signature, used for backgrounds/buttons/progress/selection only (ink text
+   on top, never lime text); green #00C805/#00953F carries readable text and
+   accents; #FF494A for sell/error. Light only. */
+
+@layer base {
+  /* Legacy font vars still referenced by inline styles: everything is Inter now. */
+  :root {
+    --font-display: var(--font-sans), system-ui, sans-serif;
+    --font-body: var(--font-sans), system-ui, sans-serif;
+    --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    color: #050600;
+    background-color: #f4f7ec;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #cef606;
+    color: #050600;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f4f7ec;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(5, 6, 0, 0.16);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00953f;
+  }
+}
+
+@layer components {
+  /* ── Surfaces: solid, crisp, no blur haze ─────────────────────────── */
+
+  .card {
+    background: #ffffff;
+    border: 1px solid rgba(5, 6, 0, 0.08);
+    border-radius: 24px;
+    padding: 1.5rem; /* legacy default; override with p-* utilities */
+    box-shadow: 0 1px 2px rgba(5, 6, 0, 0.04), 0 12px 32px -20px rgba(5, 6, 0, 0.1);
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s;
+  }
+
+  .card-hover:hover,
+  .card:hover {
+    border-color: rgba(5, 6, 0, 0.14);
+    box-shadow: 0 2px 4px rgba(5, 6, 0, 0.04), 0 24px 44px -22px rgba(5, 6, 0, 0.16);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(5, 6, 0, 0.08);
+  }
+
+  .glass-strong {
+    background: rgba(244, 247, 236, 0.92);
+    border: 1px solid rgba(5, 6, 0, 0.08);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* ── Brand ────────────────────────────────────────────────────────── */
+
+  /* Progress fills: bright lime, crisp on white cards. */
+  .grad {
+    background: linear-gradient(90deg, #cef606, #a8e600);
+  }
+
+  /* Primary action: bright lime pill, ink text. Unmissable and premium. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold
+           disabled:opacity-50 disabled:pointer-events-none;
+    background: #cef606;
+    color: #050600;
+    border: 1px solid rgba(5, 6, 0, 0.12);
+    box-shadow: 0 1px 2px rgba(5, 6, 0, 0.06), 0 10px 22px -12px rgba(150, 190, 0, 0.55);
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.25s,
+      box-shadow 0.25s;
+  }
+  .btn-primary:hover {
+    transform: translateY(-1.5px);
+    background: #dcff2e;
+    box-shadow: 0 2px 4px rgba(5, 6, 0, 0.06), 0 16px 28px -12px rgba(150, 190, 0, 0.6);
+  }
+
+  .btn-secondary,
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold
+           disabled:opacity-50 disabled:pointer-events-none;
+    background: #ffffff;
+    color: #050600;
+    border: 1px solid rgba(5, 6, 0, 0.12);
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.25s,
+      box-shadow 0.25s;
+  }
+  .btn-secondary:hover,
+  .btn-outline:hover {
+    transform: translateY(-1.5px);
+    border-color: rgba(5, 6, 0, 0.28);
+    box-shadow: 0 10px 22px -14px rgba(5, 6, 0, 0.18);
+  }
+
+  /* Danger: outline for cancel/delist, solid for the final destructive confirm. */
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold
+           disabled:opacity-50 disabled:pointer-events-none;
+    background: rgba(255, 73, 74, 0.08);
+    color: #ff494a;
+    border: 1px solid rgba(255, 73, 74, 0.35);
+    transition: background-color 0.2s, border-color 0.2s;
+  }
+  .btn-danger:hover {
+    background: rgba(255, 73, 74, 0.14);
+    border-color: rgba(255, 73, 74, 0.5);
+  }
+
+  .btn-danger-solid {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold
+           text-white disabled:opacity-50 disabled:pointer-events-none;
+    background: #ff494a;
+    border: 1px solid rgba(5, 6, 0, 0.08);
+    transition: background-color 0.2s;
+  }
+  .btn-danger-solid:hover {
+    background: #e93c3d;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium
+           disabled:opacity-50 disabled:pointer-events-none;
+    background: transparent;
+    color: #6b7280;
+    border: 1px solid rgba(5, 6, 0, 0.12);
+    transition: color 0.2s, border-color 0.2s, background-color 0.2s;
+  }
+  .btn-ghost:hover {
+    color: #050600;
+    border-color: rgba(5, 6, 0, 0.28);
+    background: #ffffff;
+  }
+
+  /* Size + width modifiers, declared after the variants so they win on padding.
+     Compose like: class="btn-primary btn-sm" */
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .btn-lg {
+    @apply px-5 py-2.5 text-sm;
+  }
+  /* Buttons hug their text; never full-width giants. */
+  .btn-block {
+    @apply w-fit self-start;
+  }
+
+  /* ── Inputs ───────────────────────────────────────────────────────── */
+
+  .input-base {
+    @apply w-full rounded-xl px-4 py-2.5 text-sm;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(5, 6, 0, 0.08);
+    color: #050600;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .input-base::placeholder {
+    color: #9ca3af;
+  }
+  .input-base:focus {
+    outline: none;
+    border-color: rgba(5, 6, 0, 0.3);
+    box-shadow: 0 0 0 4px rgba(206, 246, 6, 0.35);
+  }
+
+  .input-glow:focus-within {
+    border-color: rgba(5, 6, 0, 0.3);
+    box-shadow: 0 0 0 4px rgba(206, 246, 6, 0.35);
+  }
+
+  /* ── Badges ───────────────────────────────────────────────────────── */
+
+  .badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-[11px] font-semibold;
+  }
+
+  /* ── Error banner ─────────────────────────────────────────────────── */
+
+  .error-banner {
+    @apply rounded-xl border p-3 text-[12px];
+    border-color: rgba(255, 73, 74, 0.3);
+    background: rgba(255, 73, 74, 0.1);
+    color: #ff494a;
+  }
+}
+
+/* ── Hero backdrop ────────────────────────────────────────────────── */
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(5, 6, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(5, 6, 0, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(62% 62% at 50% 32%, black, transparent 78%);
+  -webkit-mask-image: radial-gradient(62% 62% at 50% 32%, black, transparent 78%);
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(5, 6, 0, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(5, 6, 0, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+/* Gradient text uses readable green (lime is never legible as text). */
+.gradient-text,
+.text-glow {
+  background: linear-gradient(135deg, #00c805 0%, #00953f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Avatar/placeholder fill: green gradient so white initials stay legible. */
+.gradient-bg {
+  background: linear-gradient(135deg, #00c805 0%, #00953f 100%);
+}
+
+/* Rarity borders (hairline, no glow haze) */
+.rarity-common    { border-color: #6b7280; }
+.rarity-uncommon  { border-color: #22c55e; }
+.rarity-rare      { border-color: #3b82f6; }
+.rarity-epic      { border-color: #a855f7; }
+.rarity-legendary { border-color: #f59e0b; }
+.rarity-mythic    { border-color: #ec4899; }
+
+/* Smooth page fade-in: wrap a page root with this for a clean entrance */
+.page-enter {
+  animation: pageEnter 0.4s ease both;
+}
+@keyframes pageEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Hide scrollbars on horizontal rails while keeping them scrollable. */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Bottom nav breathing room on devices with a home indicator. */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* IpfsImage loading state: shimmer skeleton while the gateway fetch is in
+   flight, then a quick fade-in so images never pop in as a blank/gray box. */
+@keyframes ipfsShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.ipfs-loading {
+  background-image: linear-gradient(
+    90deg,
+    rgba(5, 6, 0, 0.04) 25%,
+    rgba(5, 6, 0, 0.09) 37%,
+    rgba(5, 6, 0, 0.04) 63%
+  );
+  background-size: 200% 100%;
+  animation: ipfsShimmer 1.4s ease-in-out infinite;
+}
+@keyframes ipfsFade {
+  from { opacity: 0.35; }
+  to   { opacity: 1; }
+}
+.ipfs-loaded {
+  animation: ipfsFade 0.45s ease;
+}
+
+/* Respect reduced-motion: kill animations/transitions for users who ask */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

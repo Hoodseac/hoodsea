@@ -1,0 +1,43 @@
+# deps / build
+node_modules/
+.next/
+dist/
+build/
+out/
+artifacts/
+cache/
+typechain-types/
+coverage/
+.DS_Store
+*.tsbuildinfo
+
+# env (never commit real env; example is allowed)
+.env
+.env.*
+!.env.example
+
+# ─── SECRETS / KEYS — NEVER commit (this repo is PUBLIC) ───
+*.key
+*.pem
+*-deployer.json
+*-oracle.json
+.iryskey
+.modkey
+.airdropsecret
+.xoauth.json
+support.config.json
+db.json
+db.json.*
+imgcache/
+.privysecret
+.wcsecret
+
+# deploy outputs (contain live addresses)
+deployment-*.json
+redeployment-*.json
+
+# misc
+*.log
+npm-debug.log*
+.vercel
+.turbo

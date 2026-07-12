@@ -1,0 +1,21 @@
+{
+  "name": "hoodsea-oracle",
+  "version": "1.0.0",
+  "description": "Oracle backend for Hoodsea on Robinhood Chain — indexes trades, submits random airdrop recipients",
+  "main": "oracle/index.ts",
+  "scripts": {
+    "start": "ts-node oracle/index.ts",
+    "start:prod": "node dist/oracle/index.js",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@openzeppelin/merkle-tree": "^1.0.8",
+    "dotenv": "^16.4.0",
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}
