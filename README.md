@@ -52,7 +52,7 @@ Most launches fail the same handful of ways. Hoodsea closes each one at the cont
 - **Creator-set supply.** 10 to 10,000 NFTs per collection, your call.
 - **Dual liquidity.** Tokens list on Uniswap V3 (1%) and V4 — readable by bots and screeners everywhere, locked forever. Pool fees split creator / platform / kas / airdrop.
 - **OpenSea ready.** ERC-1155 with EIP-2981 royalties + `contractURI`; royalties use the same split as trading fees.
-- **Creator-set swap fee.** 1.5% base up to 3.5%, enforced by a Uniswap V4 hook with optional anti-sniper fee decay.
+- **Flat 1% swap fee.** One number on every trade, matching the open Uniswap V3 pool, with optional anti-sniper fee decay.
 - **Anti-snipe reveals.** Rarities shuffle at sellout; reveal instant or delayed 24h / 7d.
 - **Community airdrops.** 100 random traders per epoch, claimable anytime.
 
